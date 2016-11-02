@@ -10,10 +10,11 @@ import codecs
 
 class CompanyspiderPipeline(object):
     def __init__(self):
-        self.file = codecs.open('/Users/didi/code/intelli-dm/src/main/ods/company/crawler/CompanySpider/result.dat', mode='wb',encoding='utf-8')
+        self.file = codecs.open('/home/zhengliming/company_spider/crawler//result.dat', mode='wb',encoding='utf-8')
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item)) + '\n'
-        self.file.write(line.decode("unicode_escape"))
+	if item['company_city']:
+        	line = json.dumps(dict(item)) + '\n'
+        	self.file.write(line.decode("unicode_escape"))
 
         return item
