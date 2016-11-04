@@ -19,6 +19,8 @@ class TianYanCha(object):
 		self.fileFailed = open(failedPath, 'a')
 		#self.driver = webdriver.PhantomJS(executable_path = 'C:/Programs/Python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
 		self.driver = webdriver.PhantomJS(executable_path = '/usr/local/share/phantomjs-2.1.1-macosx/bin/phantomjs')
+		self.input_path = "/Users/didi/Desktop/TianYanChaPy"
+		self.output_path = "/Users/didi/Desktop/TianYanChaPy"
 
 	def __del__(self):
 		print('Get Company Info Success!')
@@ -132,14 +134,10 @@ class TianYanCha(object):
 			self.fileFailed.flush()
 
 def main():
-	query = TianYanCha('/Users/didi/Desktop/TianYanChaPy/succ.out', '/Users/didi/Desktop/TianYanChaPy/fail.out')
-	file = open('/Users/didi/Desktop/TianYanChaPy/company.in')
+	query = TianYanCha(self.output_path + '/succ.out', self.output_path + '/fail.out')
+	file = open(self.input_path + '/company.in')
 	#query.getCompanyByName('小桔科技')
-	count = 0
 	for line in file.readlines():
-		count = count + 1
-		if (count == 100):
-			break
 		query.getCompanyByName(line.strip('\n'))
 
 if __name__ == '__main__':
