@@ -32,10 +32,10 @@ class company_ganji(Spider):
         item['company_address'] = hxSelector.select("//div[@class=\"c-introduce\"]/ul/li[7]/text()").extract_first().strip()
         item['company_contact'] = hxSelector.select("//div[@class=\"c-introduce\"]/ul/li[5]/text()").extract_first().strip()
         item['company_phone'] = "img"
-        #company info in json
-        #company_info = json.loads(hxSelector.select("//script[@id='companyInfoData']").extract().body_as_unicode())
-        #item['company_name'] = company_info['coreInfo']['companyName']
-        #item['company_lng'] = company_info['coreInfo']['companyName']
-        #item['company_lat'] = company_info['coreInfo']['companyName']
+        #company lnglat in json
+        company_info_list = hxSelector.select("//div[@data-ref]/@data-ref").extract()
+        if company_info_list:
+            company_info = company_info_list[0]
+            item['company_lnglat'] = company_info['lnglat']
 
         return item

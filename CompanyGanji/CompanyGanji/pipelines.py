@@ -10,7 +10,7 @@ import codecs
 
 class CompanyganjiPipeline(object):
 	def __init__(self):
-		self.output_path = '/Users/didi/Scrapy/CompanyGanji/'
+		self.output_path = '../'
 		self.file = codecs.open(self.output_path + 'result.dat', mode='wb', encoding='utf-8')
 
 	def process_item(self, item, spider):

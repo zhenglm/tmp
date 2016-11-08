@@ -25,3 +25,5 @@ class CompanyganjiItem(Item):
     company_contact = Field()
     #联系人电话
     company_phone = Field()
+    #公司经纬度
+    company_lnglat = Field()

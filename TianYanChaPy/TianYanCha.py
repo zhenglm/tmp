@@ -19,8 +19,7 @@ class TianYanCha(object):
 		self.fileFailed = open(failedPath, 'a')
 		#self.driver = webdriver.PhantomJS(executable_path = 'C:/Programs/Python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
 		self.driver = webdriver.PhantomJS(executable_path = '/usr/local/share/phantomjs-2.1.1-macosx/bin/phantomjs')
-		self.input_path = "/Users/didi/Desktop/TianYanChaPy"
-		self.output_path = "/Users/didi/Desktop/TianYanChaPy"
+		
 
 	def __del__(self):
 		print('Get Company Info Success!')
@@ -90,7 +89,7 @@ class TianYanCha(object):
 					result = result + "\t" + com_address[0].text.replace(' ', '')
 				else:
 					result = result + "\t" + "\\N"
-				print(com_address[0].text.replace(' ', ''))
+				#print(com_address[0].text.replace(' ', ''))
 
 				#获取公司简介
 				if len(com_base_info_list) > 9:
@@ -105,7 +104,7 @@ class TianYanCha(object):
 					result = result + "\t" + com_grade[0].get_attribute('ng-alt')
 				else:
 					result = result + "\t" + "\\N"
-				print(com_grade[0].get_attribute('ng-alt'))
+				#print(com_grade[0].get_attribute('ng-alt'))
 
 				#获取公司高管
 				com_high_staff = self.driver.find_elements_by_xpath('//table[@class="staff-table ng-scope"]/tbody/tr[1]')
@@ -134,8 +133,10 @@ class TianYanCha(object):
 			self.fileFailed.flush()
 
 def main():
-	query = TianYanCha(self.output_path + '/succ.out', self.output_path + '/fail.out')
-	file = open(self.input_path + '/company.in')
+	input_path = "/Users/didi/Desktop/TianYanChaPy"
+	output_path = "/Users/didi/Desktop/TianYanChaPy"
+	query = TianYanCha(output_path + '/succ.out', output_path + '/fail.out')
+	file = open(input_path + '/company.in')
 	#query.getCompanyByName('小桔科技')
 	for line in file.readlines():
 		query.getCompanyByName(line.strip('\n'))
