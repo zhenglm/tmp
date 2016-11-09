@@ -27,3 +27,5 @@ class CompanyganjiItem(Item):
     company_phone = Field()
     #公司经纬度
     company_lnglat = Field()
+    #公司招聘职位
+    company_jobs_info = Field()
